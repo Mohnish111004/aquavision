@@ -47,6 +47,10 @@ frontend/.vite/
 *.log
 logs/
 
+# Large dataset files
+groundwater-DATASET.csv
+*.csv
+
 # Model files (optional - uncomment if models are too large)
 # *.joblib
 # *.pkl
