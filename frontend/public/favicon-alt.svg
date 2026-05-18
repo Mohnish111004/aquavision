@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="modernBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="50%" style="stop-color:#0891b2"/>
+      <stop offset="100%" style="stop-color:#0e7490"/>
+    </linearGradient>
+    <radialGradient id="glow">
+      <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+  
+  <!-- Modern rounded square background -->
+  <rect width="100" height="100" rx="20" fill="url(#modernBg)"/>
+  
+  <!-- Glow effect -->
+  <circle cx="50" cy="40" r="30" fill="url(#glow)"/>
+  
+  <!-- Stylized 'A' for AquaVision -->
+  <path d="M 50 25 L 35 65 L 42 65 L 45 55 L 55 55 L 58 65 L 65 65 Z M 47 48 L 50 38 L 53 48 Z" 
+        fill="#ffffff" 
+        stroke="#ffffff" 
+        stroke-width="1"/>
+  
+  <!-- Water waves -->
+  <g opacity="0.8">
+    <path d="M 25 75 Q 35 72, 45 75 T 65 75 T 75 75" 
+          stroke="#ffffff" 
+          stroke-width="3" 
+          fill="none" 
+          stroke-linecap="round"/>
+    <path d="M 25 82 Q 35 79, 45 82 T 65 82 T 75 82" 
+          stroke="#ffffff" 
+          stroke-width="2.5" 
+          fill="none" 
+          stroke-linecap="round"
+          opacity="0.7"/>
+  </g>
+  
+  <!-- Small droplets -->
+  <circle cx="30" cy="35" r="2.5" fill="#ffffff" opacity="0.6"/>
+  <circle cx="70" cy="40" r="2" fill="#ffffff" opacity="0.5"/>
+  <circle cx="38" cy="28" r="1.5" fill="#ffffff" opacity="0.4"/>
+</svg>
