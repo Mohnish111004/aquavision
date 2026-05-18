@@ -51,10 +51,11 @@ logs/
 groundwater-DATASET.csv
 *.csv
 
-# Model files (optional - uncomment if models are too large)
-# *.joblib
-# *.pkl
-# *.h5
+# Model files (too large for GitHub)
+*.joblib
+*.pkl
+*.h5
+backend/model/*.joblib
 
 # Output files
 output/*.png
