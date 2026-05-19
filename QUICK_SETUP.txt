@@ -1,0 +1,181 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║              AQUAVISION AI - QUICK SETUP (NEW COMPUTER)                      ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+📋 PREREQUISITES
+────────────────────────────────────────────────────────────────────────────────
+✅ Python 3.8+        https://www.python.org/downloads/
+✅ Node.js 16+        https://nodejs.org/
+✅ Git                https://git-scm.com/downloads/
+
+Check versions:
+  python3 --version
+  node --version
+  git --version
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                           SETUP STEPS (10 MINUTES)                           ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ STEP 1: CLONE REPOSITORY                                                     │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+git clone https://github.com/Mohnish111004/aquavision.git
+cd aquavision
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ STEP 2: BACKEND SETUP                                                        │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+cd backend
+pip install -r requirements.txt
+
+# Train the model (IMPORTANT - model not in GitHub)
+cd model
+python3 train_model_simple.py
+cd ..
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ STEP 3: FRONTEND SETUP                                                       │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+cd ../frontend
+npm install
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ STEP 4: RUN APPLICATION                                                      │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+TERMINAL 1 (Backend):
+  cd backend
+  python3 app.py
+  
+  ✅ Should show: "Server running on http://localhost:5001"
+
+TERMINAL 2 (Frontend):
+  cd frontend
+  npm run dev
+  
+  ✅ Should show: "Local: http://localhost:5173/"
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ STEP 5: OPEN BROWSER                                                         │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+http://localhost:5173
+
+✅ You should see AquaVision AI dashboard!
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                              TROUBLESHOOTING                                 ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+❌ "Module not found"
+   → Run: pip install -r requirements.txt (backend)
+   → Run: npm install (frontend)
+
+❌ "Model file not found"
+   → Run: cd backend/model && python3 train_model_simple.py
+
+❌ "Port already in use"
+   → Kill process: lsof -ti:5001 | xargs kill -9 (macOS/Linux)
+   → Or change port in backend/app.py
+
+❌ "Cannot connect to backend"
+   → Check backend is running on port 5001
+   → Check terminal for errors
+
+❌ "Dataset not found"
+   → Dataset too large for GitHub
+   → Contact repository owner or use your own data
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                            WHAT YOU NEED                                     ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+FROM GITHUB:
+  ✅ Source code
+  ✅ Configuration files
+  ✅ Documentation
+
+NOT IN GITHUB (TOO LARGE):
+  ❌ groundwater-DATASET.csv (74 MB)
+  ❌ aquavision_model.joblib (758 KB)
+  
+  → You create these by training the model locally
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                          FOLDER STRUCTURE                                    ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+aquavision/
+├── backend/                 # Python Flask API
+│   ├── app.py              # Start here
+│   ├── requirements.txt    # Dependencies
+│   ├── model/              # ML models
+│   ├── routes/             # API endpoints
+│   └── database/           # Database
+│
+├── frontend/               # React UI
+│   ├── package.json        # Dependencies
+│   ├── src/                # Source code
+│   └── public/             # Assets
+│
+└── Documentation files
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                         PORTS USED                                           ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Backend:  http://localhost:5001
+Frontend: http://localhost:5173
+
+Make sure these ports are free!
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                      ONE-LINER SETUP                                         ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+# Clone and setup everything
+git clone https://github.com/Mohnish111004/aquavision.git && \
+cd aquavision && \
+cd backend && pip install -r requirements.txt && \
+cd model && python3 train_model_simple.py && cd ../.. && \
+cd frontend && npm install && cd ..
+
+# Then run in 2 terminals:
+# Terminal 1: cd backend && python3 app.py
+# Terminal 2: cd frontend && npm run dev
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                         ESTIMATED TIME                                       ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+Clone repository:        1 minute
+Backend dependencies:    2-3 minutes
+Train model:            2-3 minutes
+Frontend dependencies:   2-3 minutes
+Start servers:          30 seconds
+────────────────────────────────────────────
+TOTAL:                  10-15 minutes
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                           NEED MORE HELP?                                    ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+📖 Detailed Guide:  LOCAL_SETUP.md
+📖 Quick Start:     QUICKSTART.md
+📖 API Docs:        API_DOCUMENTATION.md
+📖 Deployment:      VERCEL_DEPLOYMENT.md
+
+🐛 Issues:          https://github.com/Mohnish111004/aquavision/issues
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                              SUCCESS!                                        ║
+║                                                                              ║
+║  If you can access http://localhost:5173 and make predictions,              ║
+║  your setup is complete! 🎉                                                 ║
+║                                                                              ║
+║  🌊 AquaVision AI - Predicting water availability, one drop at a time       ║
+╚══════════════════════════════════════════════════════════════════════════════╝
