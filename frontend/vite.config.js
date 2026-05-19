@@ -13,11 +13,20 @@ export default defineConfig({
   server: {
     port: 5173,
     proxy: {
-      '/api': {
-        target: BACKEND,
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
-      }
+      '/predict': BACKEND,
+      '/explain': BACKEND,
+      '/forecast': BACKEND,
+      '/recommend': BACKEND,
+      '/health': BACKEND,
+      '/metrics': BACKEND,
+      '/auth': BACKEND,
+      '/history': BACKEND,
+      '/weather': BACKEND,
+      '/crops': BACKEND,
+      '/irrigation': BACKEND,
+      '/reports': BACKEND,
+      '/models': BACKEND,
+      '/admin': BACKEND,
     },
   },
 })
