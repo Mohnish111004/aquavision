@@ -1,0 +1,121 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                    AQUAVISION AI - DEPLOYMENT INSTRUCTIONS                   ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+
+🚀 QUICK DEPLOYMENT (10 minutes)
+
+Since Flask doesn't work well on Vercel's free tier, use this approach:
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ STEP 1: Deploy Backend to Render.com (Free)                                 │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+1. Go to: https://render.com
+2. Sign up with GitHub
+3. Click "New +" → "Web Service"
+4. Select repository: Mohnish111004/aquavision
+5. Configure:
+   
+   Name: aquavision-backend
+   Root Directory: backend
+   Build Command: pip install -r requirements.txt
+   Start Command: gunicorn app:app
+
+6. Add Environment Variables:
+   
+   DATABASE_URL=sqlite:///aquavision.db
+   SECRET_KEY=change-this-secret-key
+   JWT_SECRET_KEY=change-this-jwt-secret
+
+7. Click "Create Web Service"
+8. Wait 3-5 minutes
+9. Copy your URL: https://aquavision-backend-xxxx.onrender.com
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ STEP 2: Deploy Frontend to Vercel                                           │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+1. Go to: https://vercel.com/new
+2. Import repository: Mohnish111004/aquavision
+3. Configure:
+   
+   Framework: Vite
+   Root Directory: frontend
+   Build Command: npm run build
+   Output Directory: dist
+
+4. Add Environment Variable:
+   
+   VITE_API_URL=https://aquavision-backend-xxxx.onrender.com
+   (Use your Render URL from Step 1)
+
+5. Click "Deploy"
+6. Wait 2-3 minutes
+7. Your app is live! 🎉
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ YOUR LIVE URLS                                                               │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+Frontend: https://aquavision-xxxx.vercel.app
+Backend: https://aquavision-backend-xxxx.onrender.com
+
+Share the FRONTEND URL - it includes everything!
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ IMPORTANT NOTES                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+⚠️  Render free tier sleeps after 15 min inactivity
+    First request after sleep takes 30-60 seconds (cold start)
+
+⚠️  Model file not included in GitHub (too large)
+    Users need to train locally or you can host model separately
+
+✅  Both services auto-deploy when you push to GitHub
+✅  Completely free hosting
+✅  HTTPS included automatically
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ ALTERNATIVE: Frontend Only (Portfolio Demo)                                 │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+If you just want to show the UI:
+
+1. Deploy only frontend to Vercel
+2. Skip backend deployment
+3. UI will be visible but predictions won't work
+4. Good for portfolio/resume
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ TROUBLESHOOTING                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+Problem: Backend not responding
+→ Check Render logs in dashboard
+→ Verify environment variables are set
+
+Problem: CORS errors
+→ Update backend/app.py CORS origins
+→ Include your Vercel URL
+→ Push to GitHub (auto-deploys)
+
+Problem: API calls failing
+→ Check VITE_API_URL in Vercel
+→ Test backend URL directly in browser
+
+┌──────────────────────────────────────────────────────────────────────────────┐
+│ NEED MORE HELP?                                                              │
+└──────────────────────────────────────────────────────────────────────────────┘
+
+Read: VERCEL_DEPLOYMENT.md (detailed guide)
+Render Docs: https://render.com/docs
+Vercel Docs: https://vercel.com/docs
+
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                              READY TO DEPLOY!                                ║
+║                                                                              ║
+║  Total Time: ~10 minutes                                                    ║
+║  Total Cost: $0 (Free)                                                      ║
+║  Result: Fully working app with single URL                                  ║
+╚══════════════════════════════════════════════════════════════════════════════╝
